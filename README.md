@@ -1,6 +1,8 @@
 Wikivector
 ==========
 
+## Project is obsolete. It is 15 years old, was built in pre-DNN era, and uses Biasian filters stored inside Cassandra database.
+
 The main goal of this project is to build machine learning and information retrieval tools, which use 100GB of Wikipedia data for models training.
 
 Currently achieved goals:
@@ -72,10 +74,7 @@ Following steps have to be done in order to use Wikivector API:
 
 * install Cassandra database
 
-* create wikivector schema using cassandra-cli tool and definition in [schema file](https://github.com/crypto5/wikivector/blob/master/schema/create.cli)
-
-* download wikivector distribution: [link](
-http://dl.bintray.com/crypto5/wikivector/wikivector/wikivector/1.0.0/wikivector-1.0.0-dist.zip)
+* create wikivector schema using cassandra-cli tool and definition in [schema file](https://github.com/akolyadenko/wikivector/blob/master/schema/create.cli)
 
 * unzip distribution file
 
@@ -90,7 +89,7 @@ http://dl.bintray.com/crypto5/wikivector/wikivector/wikivector/1.0.0/wikivector-
 How to use API + example
 ===========================
 
-API is implemented as a jar library, and provides API described in [MetaDataExtractor.scala](https://github.com/crypto5/wikivector/blob/master/src/main/scala/org/wikivector/api/MetaDataExtractor.scala) file.
+API is implemented as a jar library, and provides API described in [MetaDataExtractor.scala](https://github.com/akolyadenko/wikivector/blob/master/src/main/scala/org/wikivector/api/MetaDataExtractor.scala) file.
 
 Following example illustrates how to use API. Example is implemented using Scala and SBT, but porting to other JVM languages is straightforward.
 
@@ -149,16 +148,16 @@ Application which extracts text from web-pages, computes top tf-idf lexemes and 
 Training pipeline
 =================
 
-Workflow of training pipeline is defined in https://github.com/crypto5/wikivector/blob/master/src/main/scala/org/wikivector/batch/Workflow.scala class.
+Workflow of training pipeline is defined in https://github.com/akolyadenko/wikivector/blob/master/src/main/scala/org/wikivector/batch/Workflow.scala class.
 It requires Wikipedia xml dump files which can be downloaded from http://en.wikipedia.org/wiki/Wikipedia:Database_download#Where_do_I_get... i.e. for NL wilipedia you should use http://dumps.wikimedia.org/nlwiki/latest/nlwiki-latest-pages-articles.xml.bz2 .
 Recomended way to run it is to checkout source code, install SBT, and run Workflow application using SBT.
 You may need to change some parameters to make it working, specifically:
 
-define path to directory with data files (i.e. wikipedia dumps) in https://github.com/crypto5/wikivector/blob/master/src/main/scala/org/wikivector/config/GlobalConfig.scala
+define path to directory with data files (i.e. wikipedia dumps) in https://github.com/akolyadenko/wikivector/blob/master/src/main/scala/org/wikivector/config/GlobalConfig.scala
 
-Cassandra config in https://github.com/crypto5/wikivector/blob/master/src/main/scala/org/wikivector/config/CassandraConfig.scala
+Cassandra config in https://github.com/akolyadenko/wikivector/blob/master/src/main/scala/org/wikivector/config/CassandraConfig.scala
 
-wikipedia dump files to language mappings in https://github.com/crypto5/wikivector/blob/master/src/main/scala/org/wikivector/batch/page/LoadWikipages.scala
+wikipedia dump files to language mappings in https://github.com/akolyadenko/wikivector/blob/master/src/main/scala/org/wikivector/batch/page/LoadWikipages.scala
 
 Training process can take few weeks, so be patient.
 
@@ -167,4 +166,4 @@ Happy hacking ;-)
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/0a2c0b43ce043d6934b2a5a78325f475 "githalytics.com")](http://githalytics.com/crypto5/wikivector)
 
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/crypto5/wikivector/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/akolyadenko/wikivector/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
